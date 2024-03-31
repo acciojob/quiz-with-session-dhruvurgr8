@@ -1,37 +1,16 @@
-//your JS code here.
+// Define the array to store user's answers
+const userAnswers = [];
 
-// Do not change code below this line
-// This code will just display the questions to the screen
-const questions = [
-  {
-    question: "What is the capital of France?",
-    choices: ["Paris", "London", "Berlin", "Madrid"],
-    answer: "Paris",
-  },
-  {
-    question: "What is the highest mountain in the world?",
-    choices: ["Everest", "Kilimanjaro", "Denali", "Matterhorn"],
-    answer: "Everest",
-  },
-  {
-    question: "What is the largest country by area?",
-    choices: ["Russia", "China", "Canada", "United States"],
-    answer: "Russia",
-  },
-  {
-    question: "Which is the largest planet in our solar system?",
-    choices: ["Earth", "Jupiter", "Mars"],
-    answer: "Jupiter",
-  },
-  {
-    question: "What is the capital of Canada?",
-    choices: ["Toronto", "Montreal", "Vancouver", "Ottawa"],
-    answer: "Ottawa",
-  },
-];
+// Add event listener to handle user's selection
+document.addEventListener("change", function(event) {
+  const selectedOption = event.target.value;
+  const questionIndex = event.target.getAttribute("name").split("-")[1];
+  userAnswers[questionIndex] = selectedOption;
+});
 
 // Display the quiz questions and choices
 function renderQuestions() {
+  const questionsElement = document.getElementById("questions");
   for (let i = 0; i < questions.length; i++) {
     const question = questions[i];
     const questionElement = document.createElement("div");
@@ -53,4 +32,6 @@ function renderQuestions() {
     questionsElement.appendChild(questionElement);
   }
 }
+
+// Call the renderQuestions function
 renderQuestions();
